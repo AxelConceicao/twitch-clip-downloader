@@ -1,0 +1,13 @@
+{
+  "manifest_version": 2,
+  "name": "Twitch Helper",
+  "version": "1.0.0",
+  "description": "This extension allow you to download clips and videos from Twitch platform",
+  "content_scripts": [
+    {
+      "css": ["styles.css"],
+      "js": ["content.js"],
+      "matches": ["https://dashboard.twitch.tv/*"]
+    }
+  ]
+}
