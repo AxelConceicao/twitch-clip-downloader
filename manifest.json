@@ -3,11 +3,17 @@
   "name": "Twitch Helper",
   "version": "1.0.0",
   "description": "This extension allow you to download clips and videos from Twitch platform",
+  "permissions": ["activeTab"],
   "content_scripts": [
     {
       "css": ["styles.css"],
-      "js": ["content.js"],
+      "js": ["dashboard.js"],
       "matches": ["https://dashboard.twitch.tv/*"]
+    },
+    {
+      "css": ["styles.css"],
+      "js": ["clips.js"],
+      "matches": ["https://clips.twitch.tv/*"]
     }
   ]
 }
