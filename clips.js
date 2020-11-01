@@ -17,7 +17,12 @@ function getFileName() {
   streamerName = document.querySelector('[data-test-selector="game-name-link"] span').innerHTML
   directoryName = document.querySelector(
     '.clips-sidebar [href^="https://www.twitch.tv/directory/game/"]'
-  ).innerHTML
+  )
+  if (directoryName == null) {
+    directoryName = 'No Category'
+  } else {
+    directoryName = directoryName.innerHTML
+  }
   clipName = document.querySelector('.clips-chat-info .tw-line-height-heading').innerHTML
   filename = streamerName + ' - ' + directoryName + ' - ' + clipName + '.mp4'
   filename = filename.replace(/[\\/:*?"<>|]/g, '_')
@@ -52,7 +57,7 @@ function addButton() {
   downloadBtn.onclick = function () {
     let url = document.getElementsByTagName('video')[0].src
     let filename = getFileName()
-    console.log('[ATCD] Downloading "' + filename + '" from ' + url)
+    console.log('[Twitch Clip Downloader] Downloading "' + filename + '" from ' + url)
     chrome.runtime.sendMessage({ url, filename })
   }
 }

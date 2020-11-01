@@ -16,7 +16,11 @@ function waitForElementToDisplay(selector, callback, checkFrequencyInMs, timeout
 function getFileName() {
   streamerName = document.querySelector('.channel-info-content .tw-title').innerHTML
   directoryName = document.querySelector('.channel-info-content a[href^="/directory/game/"] p')
-    .innerHTML
+  if (directoryName == null) {
+    directoryName = 'No Category'
+  } else {
+    directoryName = directoryName.innerHTML
+  }
   clipName = document.querySelector('[data-a-target=stream-title]').innerHTML
   filename = streamerName + ' - ' + directoryName + ' - ' + clipName + '.mp4'
   filename = filename.replace(/[\\/:*?"<>|]/g, '_')
@@ -43,7 +47,7 @@ function addButton() {
   downloadBtn.onclick = function () {
     let url = document.getElementsByTagName('video')[0].src
     let filename = getFileName()
-    console.log('[ATCD] Downloading "' + filename + '" from ' + url)
+    console.log('[Twitch Clip Downloader] Downloading "' + filename + '" from ' + url)
     chrome.runtime.sendMessage({ url, filename })
   }
 }

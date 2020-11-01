@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "name": "Advanced Twitch Clip Downloader",
+  "name": "Twitch Clip Downloader",
   "version": "1.0.0",
   "description": "Easily download several clips at once from your Clips Manager or a clip page with just a click.",
   "permissions": [ "downloads", "storage" ],

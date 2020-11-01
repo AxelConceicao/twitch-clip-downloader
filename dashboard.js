@@ -32,7 +32,12 @@ function getClipURL(context) {
 function getFileName(context) {
   context = context.querySelector('[data-target="clips-manager-table-row"]')
   streamerName = context.children[1].getElementsByTagName('a')[0].innerHTML
-  directoryName = context.children[2].getElementsByTagName('a')[0].innerHTML
+  directoryName = context.children[2].getElementsByTagName('a')
+  if (directoryName.length != 1) {
+    directoryName = 'No Category'
+  } else {
+    directoryName = directoryName[0].innerHTML
+  }
   clipName = context.getElementsByTagName('h5')[0].title
   filename = streamerName + ' - ' + directoryName + ' - ' + clipName + '.mp4'
   filename = filename.replace(/[\\/:*?"<>|]/g, '_')
@@ -45,7 +50,7 @@ function downloadSelectedClips() {
     if (rows[i].getElementsByClassName('tw-checkbox__input')[0].checked) {
       let url = getClipURL(rows[i])
       let filename = getFileName(rows[i])
-      console.log('[ATCD] Downloading "' + filename + '" from ' + url)
+      console.log('[Twitch Clip Downloader] Downloading "' + filename + '" from ' + url)
       chrome.runtime.sendMessage({ url, filename })
     }
   }
