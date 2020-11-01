@@ -13,14 +13,15 @@ function waitForElementToDisplay(selector, callback, checkFrequencyInMs, timeout
   })()
 }
 
-function getClipName() {
+function getFileName() {
   streamerName = document.querySelector('[data-test-selector="game-name-link"] span').innerHTML
-  directoryName = document.querySelector('.clips-sidebar [href^="https://www.twitch.tv/directory/game/"]').innerHTML
-  clipTitle = document.querySelector('.clips-chat__edit span').innerHTML
-  clipName = streamerName + ' - ' + directoryName + ' - ' + clipTitle + '.mp4'
-  clipName = clipName.replace(/[\\/:*?"<>|]/g, '_')
-  console.log(clipName)
-  return clipName
+  directoryName = document.querySelector(
+    '.clips-sidebar [href^="https://www.twitch.tv/directory/game/"]'
+  ).innerHTML
+  clipName = document.querySelector('.clips-chat-info .tw-line-height-heading').innerHTML
+  filename = streamerName + ' - ' + directoryName + ' - ' + clipName + '.mp4'
+  filename = filename.replace(/[\\/:*?"<>|]/g, '_')
+  return filename
 }
 
 function addButton() {
@@ -40,7 +41,7 @@ function addButton() {
           data-test-selector="clips-watch-full-button"
         >
           <div class="tw-align-items-center tw-core-button-label tw-flex tw-flex-grow-0">
-            <div data-a-target="tw-core-button-label-text" class="tw-flex-grow-0">Download</div>
+            <div data-a-target="tw-core-button-label-text" class="tw-flex-grow-0">Download Clip</div>
           </div>
         </a>
       </div>
@@ -49,10 +50,10 @@ function addButton() {
   )
   downloadBtn = document.getElementsByClassName('th-download-btn')[0].getElementsByTagName('a')[0]
   downloadBtn.onclick = function () {
-    chrome.runtime.sendMessage({
-      url: document.getElementsByTagName('video')[0].src,
-      filename: getClipName(),
-    })
+    let url = document.getElementsByTagName('video')[0].src
+    let filename = getFileName()
+    console.log('[ATCD] Downloading "' + filename + '" from ' + url)
+    chrome.runtime.sendMessage({ url, filename })
   }
 }
 
