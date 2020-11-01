@@ -13,6 +13,16 @@ function waitForElementToDisplay(selector, callback, checkFrequencyInMs, timeout
   })()
 }
 
+function getClipName() {
+  streamerName = document.querySelector('[data-test-selector="game-name-link"] span').innerHTML
+  directoryName = document.querySelector('.clips-sidebar [href^="https://www.twitch.tv/directory/game/"]').innerHTML
+  clipTitle = document.querySelector('.clips-chat__edit span').innerHTML
+  clipName = streamerName + ' - ' + directoryName + ' - ' + clipTitle + '.mp4'
+  clipName = clipName.replace(/[\\/:*?"<>|]/g, '_')
+  console.log(clipName)
+  return clipName
+}
+
 function addButton() {
   context = document
     .getElementsByClassName('clips-sidebar')[0]
@@ -37,11 +47,12 @@ function addButton() {
     </div>
     `
   )
-  dlBtn = document.getElementsByClassName('th-download-btn')[0].getElementsByTagName('a')[0]
-  dlBtn.onclick = function () {
-    var link = document.createElement('a')
-    link.href = document.getElementsByTagName('video')[0].src
-    link.click()
+  downloadBtn = document.getElementsByClassName('th-download-btn')[0].getElementsByTagName('a')[0]
+  downloadBtn.onclick = function () {
+    chrome.runtime.sendMessage({
+      url: document.getElementsByTagName('video')[0].src,
+      filename: getClipName(),
+    })
   }
 }
 
