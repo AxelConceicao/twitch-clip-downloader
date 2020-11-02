@@ -28,6 +28,7 @@ function getFileName() {
 }
 
 function addButton() {
+  if (document.getElementsByClassName('th-download-btn')[0]) return
   context = document.querySelector('[data-test-selector="clips-watch-full-button"]').parentElement
   context.insertAdjacentHTML(
     'beforebegin',
@@ -52,4 +53,15 @@ function addButton() {
   }
 }
 
+function setListener() {
+  document.getElementsByClassName('root')[0].addEventListener(
+    'click',
+    function () {
+      waitForElementToDisplay('[data-test-selector=clips-watch-full-button]', addButton, 10, 1000)
+    },
+    false
+  )
+}
+
+waitForElementToDisplay('#root', setListener, 100, 5000)
 waitForElementToDisplay('[data-test-selector=clips-watch-full-button]', addButton, 100, 5000)
