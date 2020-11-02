@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Twitch Clip Downloader",
   "version": "1.0.0",
-  "description": "Easily download several clips at once from your Clips Manager or a clip page with just a click.",
+  "description": "Simplest way to download clips on Twitch!",
   "permissions": [ "downloads", "storage" ],
   "background": {
     "scripts": ["background.js"]
@@ -11,7 +11,7 @@
   "content_scripts": [
     {
       "css": ["styles.css"],
-      "js": ["dashboard.js"],
+      "js": ["jquery-1.4.2.js", "dashboard.js"],
       "matches": ["https://dashboard.twitch.tv/*"]
     },
     {
@@ -22,7 +22,7 @@
     {
       "css": ["styles.css"],
       "js": ["twitch.js"],
-      "matches": ["https://www.twitch.tv/*/clip/*"]
+      "matches": ["https://www.twitch.tv/*"]
     }
   ]
 }
