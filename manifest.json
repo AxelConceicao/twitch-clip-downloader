@@ -3,7 +3,7 @@
   "name": "Twitch Clip Downloader",
   "version": "1.0.0",
   "description": "Simplest way to download clips on Twitch!",
-  "permissions": [ "downloads", "storage" ],
+  "permissions": ["downloads"],
   "background": {
     "scripts": ["background.js"]
   },
