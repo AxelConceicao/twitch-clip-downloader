@@ -2,7 +2,7 @@
 
 # Twitch Clip Downloader
 
-![Product Name Screen Shot](screenshots/thumbnail.jpg)
+<img src="screenshots/thumbnail.jpg" alt="twitch-clip-downloader-thumbnail" height="200"/>
 
 ## Table of Contents
 
