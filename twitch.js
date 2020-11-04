@@ -54,7 +54,7 @@ function addButton() {
 }
 
 function setListener() {
-  document.getElementsByClassName('root')[0].addEventListener(
+  document.getElementById('root').addEventListener(
     'click',
     function () {
       waitForElementToDisplay('[data-test-selector=clips-watch-full-button]', addButton, 10, 1000)

@@ -177,7 +177,7 @@ function addDownloadButton() {
 }
 
 function setListener() {
-  document.getElementsByClassName('clmgr-table-wrap')[0].addEventListener(
+  document.getElementById('root').addEventListener(
     'click',
     function () {
       waitForElementToDisplay(
