@@ -181,7 +181,7 @@ function setListener() {
     'click',
     function () {
       waitForElementToDisplay(
-        'button[data-test-selector=clip-snip-user]',
+        'button[data-test-selector=clips-manager-batch-delete]',
         addDownloadButton,
         10,
         1000
