@@ -1,3 +1,89 @@
 .th-download-btn {
   cursor: pointer;
 }
+
+.th-button-primary {
+  text-decoration-color: initial;
+  background-color: rgb(65, 0, 161);
+  color: rgb(232, 230, 227);
+  display: inline-flex;
+  position: relative;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  vertical-align: middle;
+  overflow: hidden;
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--border-radius-medium);
+  font-size: var(--button-text-default);
+  height: var(--button-size-default);
+  /* background-color: var(--color-background-button-primary-default); */
+  color: var(--color-text-button-primary);
+}
+
+.th-button-primary:hover {
+  background-color: rgb(80, 19, 173);
+  color: rgb(232, 230, 227);
+}
+
+.th-button-secondary {
+  display: inline-flex;
+  position: relative;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  vertical-align: middle;
+  overflow: hidden;
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+  width: 100%;
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--border-radius-medium);
+  font-size: var(--button-text-default);
+  height: var(--button-size-default);
+  background-color: var(--color-background-button-primary-default);
+  color: var(--color-text-button-primary);
+}
+
+.th-button-secondary:hover {
+  background-color: var(--color-background-button-primary-hover);
+  color: var(--color-text-button-primary);
+}
+
+.th-button-transparent {
+  text-decoration-color: initial;
+  background-color: transparent;
+  color: rgb(232, 230, 227);
+  display: inline-flex;
+  position: relative;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  vertical-align: middle;
+  overflow: hidden;
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--border-radius-medium);
+  font-size: var(--button-text-default);
+  height: var(--button-size-default);
+  /* background-color: var(--color-background-button-destructive-default); */
+  color: var(--color-text-button-destructive);
+}
+
+.th-button-content {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-flex: 0;
+  flex-grow: 0;
+  padding: 0px 1rem;
+}

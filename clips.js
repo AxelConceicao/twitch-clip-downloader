@@ -37,23 +37,14 @@ function addButton() {
   context.insertAdjacentHTML(
     'afterbegin',
     `
-    <div class="tw-inline-block th-download-btn">
-      <div class="tw-mg-b-1 tw-mg-l-1">
-        <a
-          rel="noopener noreferrer"
-          target="_blank"
-          class="tw-align-items-center tw-align-middle tw-border-bottom-left-radius-medium tw-border-bottom-right-radius-medium tw-border-top-left-radius-medium tw-border-top-right-radius-medium tw-core-button tw-core-button--primary tw-inline-flex tw-interactive tw-justify-content-center tw-overflow-hidden tw-relative"
-          data-test-selector="clips-watch-full-button"
-        >
-          <div class="tw-align-items-center tw-core-button-label tw-flex tw-flex-grow-0">
-            <div data-a-target="tw-core-button-label-text" class="tw-flex-grow-0">Download Clip</div>
-          </div>
-        </a>
+    <button class="th-download-btn th-button-primary tw-mg-b-1 tw-mg-l-1">
+      <div class="th-button-content">
+        <div data-a-target="tw-core-button-label-text" class="">Download Clip</div>
       </div>
-    </div>
+    </button>  
     `
   )
-  downloadBtn = document.getElementsByClassName('th-download-btn')[0].getElementsByTagName('a')[0]
+  downloadBtn = document.getElementsByClassName('th-download-btn')[0]
   downloadBtn.onclick = function () {
     let url = document.getElementsByTagName('video')[0].src
     let filename = getFileName()

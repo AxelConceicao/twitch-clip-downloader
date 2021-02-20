@@ -77,31 +77,23 @@ function Confirm() {
                   data-test-selector="clips-modal-main-body"
                   class="tw-border-b tw-mg-b-2 tw-pd-b-2"
                 >
-                  <p class="tw-mg-b-1">` + parseInt(countSelectedClips()) + ` clips will be downloaded.</p>
+                  <p class="tw-mg-b-1"><strong>` + parseInt(countSelectedClips()) + `</strong> clips will be downloaded.</p>
                   <p class="tw-mg-b-1">For more than ten clips I strongly recommend you to disable the setting
                   <strong>Always ask you where to save files</strong>.</p>
                   <a target="_blank" rel="noopener noreferrer" href="https://justpaste.it/9hypq" style="cursor: pointer;">See instructions here</a>
                 </div>
                 <div class="tw-flex tw-justify-content-center">
                   <div class="tw-mg-x-1">
-                    <button
-                      class="cancelActionTCD tw-align-items-center tw-align-middle tw-border-bottom-left-radius-medium tw-border-bottom-right-radius-medium tw-border-top-left-radius-medium tw-border-top-right-radius-medium tw-core-button tw-core-button--text tw-inline-flex tw-interactive tw-justify-content-center tw-overflow-hidden tw-relative"
-                      data-test-selector="clips-modal-cancel-button"
-                    >
-                      <div class="tw-align-items-center tw-core-button-label tw-flex tw-flex-grow-0">
-                        <div data-a-target="tw-core-button-label-text" class="tw-flex-grow-0">
-                          Cancel
-                        </div>
+                    <button class="th-cancelActionTCD th-download-btn th-button-transparent">
+                      <div class="th-button-content">
+                        <div data-a-target="tw-core-button-label-text" class="">Cancel</div>
                       </div>
                     </button>
                   </div>
                   <div class="tw-mg-x-1">
-                    <button
-                      class="doActionTCD tw-align-items-center tw-align-middle tw-border-bottom-left-radius-medium tw-border-bottom-right-radius-medium tw-border-top-left-radius-medium tw-border-top-right-radius-medium tw-core-button tw-core-button--primary tw-inline-flex tw-interactive tw-justify-content-center tw-overflow-hidden tw-relative"
-                      data-test-selector="clips-modal-submit-button"
-                    >
-                      <div class="tw-align-items-center tw-core-button-label tw-flex tw-flex-grow-0">
-                        <div data-a-target="tw-core-button-label-text" class="tw-flex-grow-0">
+                    <button class="th-doActionTCD th-download-btn th-button-primary">
+                      <div class="th-button-content">
+                        <div data-a-target="tw-core-button-label-text" class="">
                           Download
                         </div>
                       </div>
@@ -117,7 +109,7 @@ function Confirm() {
   </div>
   `
   $('body').prepend($content)
-  $('.doActionTCD').click(function () {
+  $('.th-doActionTCD').click(function () {
     downloadSelectedClips()
     $(this)
       .parents('.ReactModalPortal')
@@ -125,7 +117,7 @@ function Confirm() {
         $(this).remove()
       })
   })
-  $('.cancelActionTCD').click(function () {
+  $('.th-cancelActionTCD').click(function () {
     $(this)
       .parents('.ReactModalPortal')
       .fadeOut(500, function () {
@@ -152,23 +144,17 @@ function addDownloadButton() {
   context.insertAdjacentHTML(
     'beforeend',
     `
-      <div class="tw-mg-l-1 th-download-btn button-default link">
-        <button
-          class="tw-align-items-center tw-align-middle tw-border-bottom-left-radius-medium tw-border-bottom-right-radius-medium tw-border-top-left-radius-medium tw-border-top-right-radius-medium tw-core-button tw-core-button--primary tw-inline-flex tw-interactive tw-justify-content-center tw-overflow-hidden tw-relative"
-        >
-          <div class="tw-align-items-center tw-core-button-label tw-flex tw-flex-grow-0">
-            <div data-a-target="tw-core-button-label-text" class="tw-flex-grow-0">
-              Download Selected
-            </div>
-          </div>
-        </button>
-      </div>
+      <button class="th-download-btn th-button-primary tw-mg-l-1">
+        <div class="th-button-content">
+          <div data-a-target="tw-core-button-label-text" class="">Download Clip</div>
+        </div>
+      </button>  
       `
   )
-  dlBtn = document.getElementsByClassName('th-download-btn')[0].getElementsByTagName('button')[0]
+  dlBtn = document.getElementsByClassName('th-download-btn')[0]
   dlBtn.onclick = function () {
     var nbClips = parseInt(countSelectedClips())
-    if (nbClips > 10) {
+    if (nbClips >= 6) {
       Confirm()
     } else {
       downloadSelectedClips()
