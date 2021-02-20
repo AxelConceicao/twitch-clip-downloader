@@ -29,9 +29,9 @@ function getFileName() {
 
 function addButton() {
   if (document.getElementsByClassName('th-download-btn')[0]) return
-  context = document.querySelector('[data-test-selector="clips-watch-full-button"]').parentElement
+  context = document.querySelector('[data-test-selector="metadata-layout__split-top"] > div:nth-child(2) > div')
   context.insertAdjacentHTML(
-    'beforebegin',
+    'afterbegin',
     `
     <div class="tw-mg-r-1 th-download-btn">
       <a
@@ -57,11 +57,11 @@ function setListener() {
   document.getElementById('root').addEventListener(
     'click',
     function () {
-      waitForElementToDisplay('[data-test-selector=clips-watch-full-button]', addButton, 10, 1000)
+      waitForElementToDisplay('.follow-btn__follow-btn button', addButton, 100, 5000)
     },
     false
   )
 }
 
 waitForElementToDisplay('#root', setListener, 100, 5000)
-waitForElementToDisplay('[data-test-selector=clips-watch-full-button]', addButton, 100, 5000)
+waitForElementToDisplay('.follow-btn__follow-btn button', addButton, 100, 5000)
