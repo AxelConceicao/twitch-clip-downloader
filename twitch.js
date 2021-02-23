@@ -53,11 +53,11 @@ function setListener() {
   document.getElementById('root').addEventListener(
     'click',
     function () {
-      waitForElementToDisplay('[aria-label="Share"]', addButton, 100, 10000)
+      waitForElementToDisplay('[data-test-selector="metadata-layout__split-top"] > div:nth-child(2) > div .tw-core-button', addButton, 100, 10000)
     },
     false
   )
 }
 
 waitForElementToDisplay('#root', setListener, 100, 5000)
-waitForElementToDisplay('[aria-label="Share"]', addButton, 100, 10000)
+waitForElementToDisplay('[data-test-selector="metadata-layout__split-top"] > div:nth-child(2) > div .tw-core-button', addButton, 100, 10000)
