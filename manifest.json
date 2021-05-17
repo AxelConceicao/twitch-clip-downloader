@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Twitch Clip Downloader",
-  "version": "1.4",
+  "version": "1.5",
   "description": "Simplest way to download clips on Twitch!",
   "icons": {
     "128": "icons/128.png",

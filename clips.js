@@ -23,17 +23,14 @@ function getFileName() {
   } else {
     directoryName = directoryName.innerHTML
   }
-  clipName = document.querySelector('.clips-chat-info .tw-line-height-heading').innerHTML
+  clipName = document.querySelector('.clips-chat-info > div:nth-child(2) span').innerHTML
   filename = streamerName + ' - ' + directoryName + ' - ' + clipName + '.mp4'
   filename = filename.replace(/[\\/:*?"<>|]/g, '_')
   return filename
 }
 
 function addButton() {
-  context = document
-    .getElementsByClassName('clips-sidebar')[0]
-    .getElementsByClassName('tw-border-t')[0]
-    .getElementsByTagName('div')[0]
+  context = document.querySelector('.clips-sidebar > div:nth-child(3) > div')
   context.insertAdjacentHTML(
     'afterbegin',
     `
