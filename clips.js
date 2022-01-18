@@ -30,11 +30,12 @@ function getFileName() {
 }
 
 function addButton() {
+  if (document.getElementsByClassName('th-download-btn')[0]) return
   context = document.querySelector('.clips-sidebar > div:nth-child(3) > div')
   context.insertAdjacentHTML(
     'afterbegin',
     `
-    <button class="th-download-btn th-button-primary tw-mg-b-1 tw-mg-l-1">
+    <button class="th-download-btn th-button-primary tw-mg-b-1 tw-mg-l-1" style="margin-bottom: 1rem !important;margin-right: 1rem !important;">
       <div class="th-button-content">
         <div data-a-target="tw-core-button-label-text" class="">Download Clip</div>
       </div>
@@ -50,4 +51,5 @@ function addButton() {
   }
 }
 
-waitForElementToDisplay('.video-player__container video', addButton, 100, 5000)
+waitForElementToDisplay('[data-test-selector="clips-watch-full-button"]', addButton, 100, 5000)
+waitForElementToDisplay('.clips-sidebar [data-a-target="tw-core-button-label-text"]', addButton, 100, 5000)

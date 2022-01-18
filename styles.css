@@ -4,8 +4,8 @@
 
 .th-button-primary {
   text-decoration-color: initial;
-  background-color: rgb(65, 0, 161);
-  color: rgb(232, 230, 227);
+  background-color: #772ce8;
+  color: #fff;
   display: inline-flex;
   position: relative;
   -webkit-box-align: center;
@@ -86,4 +86,152 @@
   -webkit-box-flex: 0;
   flex-grow: 0;
   padding: 0px 1rem;
+}
+
+.clip-modal {
+  max-width: 42rem;
+  min-width: 30rem;
+  width: 100%;
+}
+
+.th-modal-container {
+  padding: 2rem !important;
+  background-color: #18181b !important;
+}
+
+.th-modal-header {
+  border-bottom: var(--border-width-default) solid var(--color-border-base) !important;
+  margin-bottom: 2rem !important;
+  padding-bottom: 1rem !important;
+}
+
+.th-modal-content {
+  border-bottom: var(--border-width-default) solid var(--color-border-base) !important;
+  margin-bottom: 2rem !important;
+  padding-bottom: 2rem !important;
+}
+
+.th-modal-footer {
+  display: flex !important;
+  -webkit-box-pack: center !important;
+  justify-content: center !important;
+}
+
+.th-modal-button {
+  margin-left: 1rem !important;
+  margin-right: 1rem !important;
+}
+
+.th-modal-button-cancel {
+  background-color: var(--color-background-button-text-default);
+  color: var(--color-text-button-text);
+}
+
+.th-modal-button-content {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-flex: 0;
+  flex-grow: 0;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: var(--button-padding-x);
+  padding-right: var(--button-padding-x);
+}
+
+.th-modal-button-wrap {
+  -webkit-box-flex: 0 !important;
+  flex-grow: 0 !important;
+  display: flex !important;
+  -webkit-box-align: center !important;
+  align-items: center !important;
+  -webkit-box-pack: start !important;
+  justify-content: flex-start !important;
+}
+
+.th-modal-button-download:hover {
+  background-color: rgb(80, 19, 173);
+  color: #fff;
+}
+
+.th-modal-button-download {
+  background-color: #772ce8;
+  color: #fff;
+}
+
+.th-modal-button-container {
+  display: inline-flex;
+  position: relative;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  vertical-align: middle;
+  overflow: hidden;
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--border-radius-medium);
+  font-size: var(--button-text-default);
+  height: var(--button-size-default);
+}
+
+.modal__backdrop,
+.tw-root--theme-dark .modal__backdrop,
+.tw-root--theme-light .modal__backdrop {
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+.modal__backdrop {
+  align-items: flex-start;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  overflow: auto;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 5000;
+}
+
+.modal__content {
+  color: #0e0e10;
+  display: flex;
+  flex-grow: 0;
+  height: 100%;
+  justify-content: center;
+  outline: none;
+  pointer-events: none;
+  width: 100%;
+}
+
+.th-modal-button-download-btn:hover {
+  background-color: var(--color-background-button-destructive-hover);
+  color: var(--color-text-button-destructive);
+}
+
+.th-modal-button-download-btn {
+  background-color: var(--color-background-button-destructive-default);
+  color: var(--color-text-button-destructive);
+}
+
+.th-modal-jCrgss {
+  display: flex !important;
+  -webkit-box-pack: center !important;
+  justify-content: center !important;
+  align-items: flex-start !important;
+  height: 100% !important;
+  width: 100% !important;
+}
+
+.th-modal-kDVThR {
+  display: flex !important;
+  -webkit-box-flex: 0 !important;
+  flex-grow: 0 !important;
+  -webkit-box-pack: center !important;
+  justify-content: center !important;
+  position: relative !important;
+  width: 100% !important;
 }
