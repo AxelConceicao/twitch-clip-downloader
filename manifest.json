@@ -1,7 +1,7 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Twitch Clip Downloader",
-  "version": "1.6",
+  "version": "1.7",
   "description": "Simplest way to download clips on Twitch!",
   "icons": {
     "128": "icons/128.png",
@@ -9,26 +9,47 @@
     "32": "icons/32.png",
     "48": "icons/48.png"
   },
-  "permissions": ["downloads"],
+  "permissions": [
+    "downloads"
+  ],
   "background": {
-    "scripts": ["background.js"]
+    "service_worker": "background.js"
   },
-  "browser_action": {},
+  "action": {},
   "content_scripts": [
     {
-      "css": ["styles.css"],
-      "js": ["jquery-1.4.2.js", "dashboard.js"],
-      "matches": ["https://dashboard.twitch.tv/*"]
+      "css": [
+        "styles.css"
+      ],
+      "js": [
+        "jquery-1.4.2.js",
+        "dashboard.js"
+      ],
+      "matches": [
+        "https://dashboard.twitch.tv/*"
+      ]
     },
     {
-      "css": ["styles.css"],
-      "js": ["clips.js"],
-      "matches": ["https://clips.twitch.tv/*"]
+      "css": [
+        "styles.css"
+      ],
+      "js": [
+        "clips.js"
+      ],
+      "matches": [
+        "https://clips.twitch.tv/*"
+      ]
     },
     {
-      "css": ["styles.css"],
-      "js": ["twitch.js"],
-      "matches": ["https://www.twitch.tv/*"]
+      "css": [
+        "styles.css"
+      ],
+      "js": [
+        "twitch.js"
+      ],
+      "matches": [
+        "https://www.twitch.tv/*"
+      ]
     }
   ]
 }

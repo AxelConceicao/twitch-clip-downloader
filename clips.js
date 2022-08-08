@@ -24,7 +24,7 @@ function getFileName() {
     directoryName = directoryName.innerHTML
   }
   clipName = document.querySelector('.clips-chat-info > div:nth-child(2) span').innerHTML
-  filename = streamerName + ' - ' + directoryName + ' - ' + clipName + '.mp4'
+  filename = streamerName + ' - ' + directoryName + ' - ' + clipName + ' - ' + Math.random().toString(16).slice(10) + '.mp4'
   filename = filename.replace(/[\\/:*?"<>|]/g, '_')
   return filename
 }

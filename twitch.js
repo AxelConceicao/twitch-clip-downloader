@@ -22,7 +22,7 @@ function getFileName() {
     directoryName = directoryName.innerHTML
   }
   clipName = document.querySelector('[data-a-target=stream-title]').innerHTML
-  filename = streamerName + ' - ' + directoryName + ' - ' + clipName + '.mp4'
+  filename = streamerName + ' - ' + directoryName + ' - ' + clipName + ' - ' + Math.random().toString(16).slice(10) + '.mp4'
   filename = filename.replace(/[\\/:*?"<>|]/g, '_')
   return filename
 }

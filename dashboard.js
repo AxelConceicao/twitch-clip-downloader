@@ -39,7 +39,7 @@ function getFileName(context) {
     directoryName = directoryName[0].innerHTML
   }
   clipName = context.getElementsByTagName('h5')[0].title
-  filename = streamerName + ' - ' + directoryName + ' - ' + clipName + '.mp4'
+  filename = streamerName + ' - ' + directoryName + ' - ' + clipName + ' - ' + Math.random().toString(16).slice(10) + '.mp4'
   filename = filename.replace(/[\\/:*?"<>|]/g, '_')
   return filename
 }
