@@ -1,8 +1,6 @@
-<img src="icons/128.png" alt="twitch-clip-downloader-logo" width="96"/>
-
 # Twitch Clip Downloader
 
-<img src="screenshots/thumbnail.jpg" alt="twitch-clip-downloader-thumbnail" height="200"/>
+<img src="screenshots/overview.png" />
 
 ## Table of Contents
 
@@ -44,8 +42,6 @@ To save time, clips will be renamed with the naming convention : *"Streamer - Ca
 ### Installation
 
 * [Click here to get Twitch Clip Downloader from the Chrome Store](https://chrome.google.com/webstore/detail/twitch-clip-downloader/dppnlpgimafbdjdlemjpbbokdeggemag)
-
-![Overview](screenshots/overview.png)
 
 ## Screenshots
 
