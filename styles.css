@@ -4,7 +4,7 @@
 
 .th-button-primary {
   text-decoration-color: initial;
-  background-color: #772ce8;
+  background-color: #9147ff;
   color: #fff;
   display: inline-flex;
   position: relative;
@@ -26,8 +26,8 @@
 }
 
 .th-button-primary:hover {
-  background-color: rgb(80, 19, 173);
-  color: rgb(232, 230, 227);
+  background-color: #772ce8;
+  color: #fff;
 }
 
 .th-button-secondary {
@@ -155,7 +155,7 @@
 }
 
 .th-modal-button-download {
-  background-color: #772ce8;
+  background-color: #9147ff;
   color: #fff;
 }
 

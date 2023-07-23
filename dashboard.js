@@ -15,22 +15,23 @@ function waitForElementToDisplay(selector, callback, checkFrequencyInMs, timeout
 
 function countSelectedClips() {
   c = 0
-  rows = document.getElementsByClassName('clmgr-table__row')
-  for (var i = 0; i < rows.length; i++) {
-    if (rows[i].getElementsByClassName('tw-checkbox__input')[0].checked) {
+  checkbox = document.querySelectorAll('input[data-a-target="tw-checkbox"]')
+  for (var i = 1; i < checkbox.length; i++) {
+    if (checkbox[i].checked) {
       c += 1
     }
   }
   return c
 }
 
-function getClipURL(context) {
+function getClipURL(checkbox) {
+  context = checkbox.parentElement.parentElement.parentElement
   var src = context.getElementsByTagName('img')[0].src
   return src.replace(/-preview.*/, '') + '.mp4'
 }
 
-function getFileName(context) {
-  context = context.querySelector('[data-target="clips-manager-table-row"]')
+function getFileName(checkbox) {
+  context = checkbox.parentElement.parentElement.parentElement.parentElement.parentElement
   streamerName = context.children[1].getElementsByTagName('a')[0].innerHTML
   directoryName = context.children[2].getElementsByTagName('a')
   if (directoryName.length != 1) {
@@ -39,7 +40,15 @@ function getFileName(context) {
     directoryName = directoryName[0].innerHTML
   }
   clipName = context.getElementsByTagName('h5')[0].title
-  filename = streamerName + ' - ' + directoryName + ' - ' + clipName + ' - ' + Math.random().toString(16).slice(10) + '.mp4'
+  filename =
+    streamerName +
+    ' - ' +
+    directoryName +
+    ' - ' +
+    clipName +
+    ' - ' +
+    Math.random().toString(16).slice(10) +
+    '.mp4'
   filename = filename.replace(/[\\/:*?"<>|]/g, '_')
   return filename
 }
@@ -185,12 +194,13 @@ function Confirm() {
       })
   })
 }
+
 function downloadSelectedClips() {
-  rows = document.getElementsByClassName('clmgr-table__row')
-  for (var i = 0; i < rows.length; i++) {
-    if (rows[i].getElementsByClassName('tw-checkbox__input')[0].checked) {
-      let url = getClipURL(rows[i])
-      let filename = getFileName(rows[i])
+  checkbox = document.querySelectorAll('input[data-a-target="tw-checkbox"]')
+  for (var i = 1; i < checkbox.length; i++) {
+    if (checkbox[i].checked) {
+      let url = getClipURL(checkbox[i])
+      let filename = getFileName(checkbox[i])
       console.log('[Twitch Clip Downloader] Downloading "' + filename + '" from ' + url)
       chrome.runtime.sendMessage({ url, filename })
     }
@@ -198,41 +208,42 @@ function downloadSelectedClips() {
 }
 
 function addDownloadButton() {
-  if (document.getElementsByClassName('th-download-btn')[0] || countSelectedClips() == 0) return
-  context = document.querySelector(
-    'button[data-test-selector=clips-manager-batch-delete]'
-  ).parentElement
-  context.insertAdjacentHTML(
-    'beforeend',
-    `
-      <button class="th-download-btn th-button-primary tw-mg-l-1" style="margin-left: 1rem;">
-        <div class="th-button-content">
-          <div data-a-target="tw-core-button-label-text" class="">Download Clips</div>
-        </div>
-      </button>  
-      `
-  )
-  dlBtn = document.getElementsByClassName('th-download-btn')[0]
-  dlBtn.onclick = function () {
-    var nbClips = parseInt(countSelectedClips())
-    if (nbClips >= 6) {
-      Confirm()
+  setTimeout(() => {
+    if (countSelectedClips()) {
+      if (!document.getElementsByClassName('th-download-btn')[0]) {
+        context = document.querySelector('input[data-a-target="tw-checkbox"]')
+        context.parentElement.parentElement.parentElement.insertAdjacentHTML(
+          'beforeend',
+          `
+            <button class="th-download-btn th-button-primary tw-mg-l-1" style="margin-left: 1rem;">
+              <div class="th-button-content">
+                <div data-a-target="tw-core-button-label-text" class="">Download selection</div>
+              </div>
+            </button>
+            `
+        )
+        dlBtn = document.getElementsByClassName('th-download-btn')[0]
+        dlBtn.onclick = function () {
+          var nbClips = parseInt(countSelectedClips())
+          if (nbClips >= 6) {
+            Confirm()
+          } else {
+            downloadSelectedClips()
+          }
+        }
+      }
     } else {
-      downloadSelectedClips()
+      dlBtn = document.getElementsByClassName('th-download-btn')[0]
+      dlBtn && dlBtn.remove()
     }
-  }
+  }, 10)
 }
 
 function setListener() {
   document.getElementById('root').addEventListener(
     'click',
     function () {
-      waitForElementToDisplay(
-        'button[data-test-selector=clips-manager-batch-delete]',
-        addDownloadButton,
-        10,
-        1000
-      )
+      waitForElementToDisplay('input[data-a-target="tw-checkbox"]', addDownloadButton, 10, 1000)
     },
     false
   )
